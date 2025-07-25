@@ -2,12 +2,14 @@
 
 {% block content %}
 
-<h1>
-    register victim PAGE
+<h1 class="text-center">
+    register victim page
 </h1>
 
-<form action="">
-form goes here
+<form action="" class="outline-1">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Submit">
 </form>
 
 {% endblock %}
