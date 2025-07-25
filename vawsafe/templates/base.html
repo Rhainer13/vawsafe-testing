@@ -1,0 +1,32 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASE HTML</title>
+    {% tailwind_css %}
+</head>
+<body>
+    <header class="text-center">
+        Header
+    </header>
+    <div class="flex flex-row">
+        <nav class="outline-1">
+            <ul>
+                <li>
+                    Navigation Bar
+                </li>
+                <li>
+                    <a href="{% url 'register_victim' %}">Register Victim</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="outline-1 flex-1">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+</body>
+</html>
