@@ -9,9 +9,9 @@ class VictimSurvivorInformationForm(ModelForm):
 class IncidentInformationForm(ModelForm):
     class Meta:
         model = IncidentInformation
-        fields = '__all__'
+        exclude = ['victimSurvivor']
 
 class AllegedPerpetratorInformationForm(ModelForm):
     class Meta:
         model = AllegedPerpetratorInformation
-        fields = '__all__'
+        exclude = ['victimSurvivor']
