@@ -4,31 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BASE HTML</title>
+    <title>VAWSAFE</title>
     {% tailwind_css %}
 </head>
-<body>
-    <header class="text-center">
-        <h1 class="text-2xl font-bold">
-            Header
-        </h1>
+<body class="bg-gray-200 min-h-screen font-sans text-gray-900">
+
+    <!-- Header -->
+    <header class="bg-indigo-700 shadow p-4">
+        <h1 class="text-3xl font-bold text-center text-white tracking-wide">VAWSAFE</h1>
     </header>
-    <div class="flex flex-row">
-        <nav class="outline-1">
-            <ul>
+
+    <!-- Layout -->
+    <div class="flex flex-col md:flex-row">
+
+        <!-- Sidebar -->
+        <nav class="bg-gray-800 text-gray-100 w-full md:w-64 min-h-screen p-4 space-y-4">
+            <ul class="space-y-2">
                 <li>
-                    <a href="{% url 'index' %}">Home</a>
+                    <a href="{% url 'index' %}" class="block py-2 px-4 rounded-lg hover:bg-indigo-600 transition">
+                        Home
+                    </a>
                 </li>
                 <li>
-                    <a href="{% url 'register_victim' %}">Register Victim</a>
+                    <a href="{% url 'dashboard' %}" class="block py-2 px-4 rounded-lg hover:bg-indigo-600 transition">
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'register_victim' %}" class="block py-2 px-4 rounded-lg hover:bg-indigo-600 transition">
+                        Register Victim
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'victim_list' %}" class="block py-2 px-4 rounded-lg hover:bg-indigo-600 transition">
+                        Victim List
+                    </a>
                 </li>
             </ul>
         </nav>
 
-        <main class="outline-1 flex-1">
-            {% block content %}
-            {% endblock %}
+        <!-- Main Content -->
+        <main class="flex-1 p-6 h-screen overflow-y-auto">
+            <div class="bg-white rounded-xl shadow p-6">
+                {% block content %}
+                {% endblock %}
+            </div>
         </main>
     </div>
+
 </body>
 </html>

@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'desk_officer.apps.DeskOfficerConfig',
     'tailwind',
     'theme',
-    'django_browser_reload'
+    'django_browser_reload',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

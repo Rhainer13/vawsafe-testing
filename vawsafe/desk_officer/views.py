@@ -1,9 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from .models import VictimSurvivorInformation, IncidentInformation, AllegedPerpetratorInformation
 from .forms import VictimSurvivorInformationForm, IncidentInformationForm, AllegedPerpetratorInformationForm
 
 def index(request):
     return render(request, "desk_officer/index.html")
+
+def dashboard(request):
+    return render(request, "desk_officer/dashboard.html")
 
 def registerVictim(request):
     if request.method == 'POST':
@@ -15,21 +19,25 @@ def registerVictim(request):
             victim = victim_form.save()
 
             incident = incident_form.save(commit=False)
-            incident.victimSurvivor = victim
+            incident.victim_survivor = victim
             incident.save()
 
             perpetrator = perpetrator_form.save(commit=False)
-            perpetrator.victimSurvivor = victim
+            perpetrator.victim_survivor = victim
             perpetrator.save()
 
-            return HttpResponse("Victim registered successfully.")
+            return redirect('victim_list')  # Redirect to the victim list after saving
     else:
         victim_form = VictimSurvivorInformationForm()
         incident_form = IncidentInformationForm()
         perpetrator_form = AllegedPerpetratorInformationForm()
 
-    return render(request, "desk_officer/register_victim.html", {
+    return render(request, "desk_officer/register-victim.html", {
         'victim_form': victim_form,
         'incident_form': incident_form,
         'perpetrator_form': perpetrator_form
     })
+
+def victimList(request):
+    victims = VictimSurvivorInformation.objects.all()
+    return render(request, "desk_officer/victim-list.html", {'victims': victims})

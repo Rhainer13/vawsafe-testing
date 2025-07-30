@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for victim in victims %}
+<ul>
+    <li>
+        {{ victim.last_name }} {{ victim.first_name }} {{ victim.middle_name }}
+    </li>
+</ul>    
+{% endfor %}
+{% endblock%}
